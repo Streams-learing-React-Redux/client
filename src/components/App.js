@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
-// import { HashRouter, Route, Link } from "react-router-dom";
-// import { MemoryRouter, Route, Link } from "react-router-dom";
+
 //dummy component
 const PageOne = () => {
   return (
@@ -28,20 +27,6 @@ const App = () => {
           <Route path="/page2" component={PageTwo} />
         </div>
       </BrowserRouter>
-
-      {/* <HashRouter>  //this injects a # befor curretn path route
-        <div>
-          <Route path="/" exact component={PageOne} />
-          <Route path="/page2" component={PageTwo} />
-        </div>
-      </HashRouter> */}
-
-      {/* <MemoryRouter> // this doesnot changes the url on clicking on different page link
-        <div>
-          <Route path="/" exact component={PageOne} />
-          <Route path="/page2" component={PageTwo} />
-        </div>
-      </MemoryRouter> */}
     </div>
   );
 };

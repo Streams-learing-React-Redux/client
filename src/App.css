@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+
+html {
+  font-family: "Open Sans", sans-serif;
+  text-align: center;
+  font-size: calc(10px + 2vmin);
+}
+.App {
+  display: flex;
+  flex-flow: column;
+  border: 1px solid rgba(102, 100, 100, 0.418);
+}
+.container {
+  margin: 10px 20px;
+  text-align: left;
+}
+
+.header-pointing-menu {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(151, 146, 146, 0.753);
+  padding: 10px 5px;
+  margin-bottom: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(49, 48, 48);
+}

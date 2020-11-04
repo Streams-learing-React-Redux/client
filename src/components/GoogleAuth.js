@@ -32,9 +32,9 @@ class GoogleAuth extends Component {
   //helper method to print if user loggedin or not
   renderAuthButton() {
     if (this.state.isSignedIn === null) {
-      return <div>User status not known</div>;
+      return null;
     } else if (this.state.isSignedIn) {
-      return <div>User currently signed in</div>;
+      return <button className="google-button">G Sign Out</button>;
     } else {
       return <div>User not signed in</div>;
     }

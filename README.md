@@ -31,7 +31,20 @@ Different types of Routers:
 
 ### 2. User authentication
 
-- Google Oauth
+- Google Oauth 2
+
+* authenticate with outside service provider
+* user authorize this app to access their information
+* outsider provider identifies the user
+* it can be used for -> user identification and any kind of action made by the app on behalf of the user
+
+steps for steup OAuth:
+
+1. create new project at console.developers.google.com/
+2. set up an OAuth confirmation screen
+3. Generate OAuth client id
+4. install Google's API library, initialize it with the OAuth client ID
+5. make sure the lib gets called everytime the user clicks on "login with google " button
 
 ### 3. Handle forms in Redux
 

@@ -47,11 +47,10 @@ a {
   text-decoration: none;
   border: none;
   border-radius: 8px;
-  width: calc(5rem + 1rem);
-  height: calc(50px + 1vmin);
+  height: auto;
   color: white;
-  padding: 5px 0 0 calc(10px - 0.01rem);
-  font-size: calc(2px + 1rem);
+  padding: 5px calc(9px - 0.01rem);
+  font-size: calc(1px + 1rem);
   margin: 0 calc(2px + 1rem);
   font-family: "Poppins", sans-serif;
 }

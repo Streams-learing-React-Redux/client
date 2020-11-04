@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 html {
   font-family: "Open Sans", sans-serif;
   text-align: center;
@@ -22,7 +22,11 @@ html {
   border-bottom: 1px solid rgba(151, 146, 146, 0.753);
   padding: calc(10px + 1vw) calc(20px + 1vw);
   margin-bottom: calc(4px + 1vmin);
-  background-color: rgb(151, 69, 206);
+  background-color: rgba(127, 110, 138, 0.753);
+}
+.header-right-menu {
+  display: flex;
+  flex-flow: row;
 }
 
 .container-body {
@@ -34,4 +38,20 @@ html {
 a {
   text-decoration: none;
   color: rgb(252, 245, 245);
+}
+
+.google-button {
+  display: flex;
+  flex-flow: row;
+  background-color: #e44332;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  width: calc(5rem + 1rem);
+  height: calc(50px + 1vmin);
+  color: white;
+  padding: 5px 0 0 calc(10px - 0.01rem);
+  font-size: calc(2px + 1rem);
+  margin: 0 calc(2px + 1rem);
+  font-family: "Poppins", sans-serif;
 }

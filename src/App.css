@@ -11,7 +11,7 @@ html {
   border: 1px solid rgba(102, 100, 100, 0.418);
 }
 .container {
-  margin: 10px 20px;
+  margin: calc(10px + 1vw) calc(20px + 1vw);
   text-align: left;
 }
 
@@ -20,11 +20,18 @@ html {
   flex-flow: row;
   justify-content: space-between;
   border-bottom: 1px solid rgba(151, 146, 146, 0.753);
-  padding: 10px 5px;
-  margin-bottom: 10px;
+  padding: calc(10px + 1vw) calc(20px + 1vw);
+  margin-bottom: calc(4px + 1vmin);
+  background-color: rgb(151, 69, 206);
+}
+
+.container-body {
+  display: flex;
+  flex-flow: row;
+  padding: calc(5px + 1vw) calc(20px + 1vw);
 }
 
 a {
   text-decoration: none;
-  color: rgb(49, 48, 48);
+  color: rgb(252, 245, 245);
 }

@@ -1,6 +1,6 @@
 import React from "react";
 
 const StreamList = () => {
-  return <div>StreamList</div>;
+  return <div className="container-body">StreamList</div>;
 };
 export default StreamList;

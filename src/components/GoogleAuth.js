@@ -18,9 +18,16 @@ class GoogleAuth extends Component {
           this.auth = window.gapi.auth2.getAuthInstance();
           //update the component state when user is signed in
           this.setState({ isSignedIn: this.auth.isSignedIn.get() });
+          //adding event listener with a call back function to it
+          this.auth.isSignedIn.listen(this.onAuthChange);
         });
     });
   }
+
+  //call back function for event listener
+  onAuthChange = () => {
+    this.setState({ isSignedIn: this.auth.isSignedIn.get() });
+  };
 
   //helper method to print if user loggedin or not
   renderAuthButton() {
@@ -64,3 +71,6 @@ export default GoogleAuth;
 
 //after that, initailize the state object while defining our class component, before componenetdidmount(). we set it to null cause we do not know if the user is signedin or not signed in when the app first loads. so it we will not print anything at that moment
 // here we will use a helper method renderAuthButton to print out the appropriate text.
+
+//to update the state on screen:
+//add a eventlistener

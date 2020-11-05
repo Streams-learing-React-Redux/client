@@ -3,8 +3,6 @@ import { connect } from "react-redux";
 import { signIn, signOut } from "../actions";
 
 class GoogleAuth extends Component {
-  state = { isSignedIn: null };
-
   componentDidMount() {
     // load the lib
     window.gapi.load("client:auth2", () => {
@@ -19,7 +17,9 @@ class GoogleAuth extends Component {
           //refferns to the librery
           this.auth = window.gapi.auth2.getAuthInstance();
           //update the component state when user is signed in
-          this.setState({ isSignedIn: this.auth.isSignedIn.get() });
+          // this.setState({ isSignedIn: this.auth.isSignedIn.get() })
+          //not using the componenet state any more so...updating the auth state in redux store like below
+          this.onAuthChange(this.auth.isSignedIn.get());
           //adding event listener with a call back function to it
           this.auth.isSignedIn.listen(this.onAuthChange);
         });
@@ -45,9 +45,10 @@ class GoogleAuth extends Component {
 
   //helper method to print if user loggedin or not
   renderAuthButton() {
-    if (this.state.isSignedIn === null) {
+    //not having state any more so passing the props
+    if (this.props.isSignedIn === null) {
       return null;
-    } else if (this.state.isSignedIn) {
+    } else if (this.props.isSignedIn) {
       return (
         <button onClick={this.onSignOutClick} className="google-button">
           G Sign Out
@@ -71,7 +72,11 @@ class GoogleAuth extends Component {
   }
 }
 
-export default connect(null, { signIn, signOut })(GoogleAuth);
+const mapStateToProps = state => {
+  return { isSignedIn: state.auth.isSignedIn };
+};
+
+export default connect(mapStateToProps, { signIn, signOut })(GoogleAuth);
 
 //gapi is the librery is available via window scope.
 //gapi.load means : load up all functions

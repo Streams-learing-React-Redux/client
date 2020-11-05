@@ -27,9 +27,11 @@ class GoogleAuth extends Component {
   }
 
   //call back function for event listener
+  //when we call sign in, we also want to pass in the id of the current user
   onAuthChange = isSignedIn => {
     if (isSignedIn) {
-      this.props.signIn();
+      this.props.signIn(this.auth.currentUser.get().getId());
+      //now we need to receive the id to action creator as an argument and pass it through the reducer by assigning the id to the action object as a payload property
     } else {
       this.props.signOut();
     }

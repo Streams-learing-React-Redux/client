@@ -1,8 +1,10 @@
 import { SIGN_IN, SIGN_OUT } from "./types";
 
-export const signIn = () => {
+//will receive userId as an argument and add it to the payload property
+export const signIn = userId => {
   return {
-    type: SIGN_IN
+    type: SIGN_IN,
+    payload: userId
   };
 };
 export const signOut = () => {

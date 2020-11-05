@@ -8,12 +8,14 @@ import { Field, reduxForm } from "redux-form";
 
 class StreamCreate extends React.Component {
   //helper method for Field. it will be a controlled element
-  renderInput({ input, label }) {
+  renderInput({ input, label, meta }) {
     // console.log(formProps);
+    // console.log(meta);
     return (
       <div className="field">
         <label>{label}</label>
         <input {...input} />
+        <div>{meta.error}</div>
       </div>
     );
   }
@@ -37,8 +39,24 @@ class StreamCreate extends React.Component {
   }
 }
 
+//validate form input
+const validate = formValues => {
+  const errors = {};
+
+  if (!formValues.title) {
+    // only ran if user didnot give any title
+    errors.title = "You must enter a Title!";
+  }
+  if (!formValues.description) {
+    // only ran if user didnot give any title
+    errors.description = "You must enter a Description!";
+  }
+  return errors;
+};
+
 export default reduxForm({
-  form: "streamCreate"
+  form: "streamCreate",
+  validate
 })(StreamCreate);
 
 //we will refactor this functional componenet to a class based component because, we need few helper method and we want a better organising sitauation here.
@@ -52,3 +70,6 @@ export default reduxForm({
 //for that we will add a helper method called renderInput
 // <input {...formProps.input} />  here, total input object with its properties are added as props to input element
 //we will destructure the <input {...formProps.input} />  and it will be <input {...input} />  like this
+
+//validate input: fuction -> wire it up with redux
+//The big connection between the validate() and getting msg into renderInput is all about field name.

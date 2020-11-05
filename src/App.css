@@ -54,3 +54,22 @@ a {
   margin: 0 calc(2px + 1rem);
   font-family: "Poppins", sans-serif;
 }
+.item {
+  font-size: calc(1px + 1rem);
+  margin: 0 calc(2px + 1rem);
+}
+
+.field {
+  display: flex;
+  flex-flow: column;
+  height: calc(90px + 1rem);
+}
+label {
+  font-weight: 900;
+  margin-bottom: 5px;
+}
+input {
+  height: calc(10px + 1rem);
+  border: 1.5px solid rgba(202, 189, 189, 0.767);
+  border-radius: 8px;
+}

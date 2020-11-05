@@ -15,6 +15,7 @@ html {
   text-align: left;
 }
 
+/* need to add media query for smaller then 500px width */
 .header-pointing-menu {
   display: flex;
   flex-flow: row;
@@ -23,6 +24,7 @@ html {
   padding: calc(10px + 1vw) calc(20px + 1vw);
   margin-bottom: calc(4px + 1vmin);
   background-color: rgba(127, 110, 138, 0.753);
+  max-width: 100%;
 }
 .header-right-menu {
   display: flex;
@@ -52,6 +54,18 @@ a {
   padding: 5px calc(9px - 0.01rem);
   font-size: calc(1px + 1rem);
   margin: 0 calc(2px + 1rem);
+  font-family: "Poppins", sans-serif;
+}
+
+.button {
+  background-color: #4c78f1;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  height: auto;
+  color: white;
+  padding: 10px calc(18px - 0.01rem);
+  font-size: calc(1px + 1rem);
   font-family: "Poppins", sans-serif;
 }
 .item {

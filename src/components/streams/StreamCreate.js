@@ -17,15 +17,21 @@ class StreamCreate extends React.Component {
       </div>
     );
   }
+  //handleing submission
+  onSubmit(formValues) {
+    console.log(formValues);
+  }
   render() {
+    // console.log(this.props);
     return (
-      <form className="form">
+      <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="form">
         <Field name="title" component={this.renderInput} label="Enter Title" />
         <Field
           name="description"
           component={this.renderInput}
           label="Enter Description"
         />
+        <button className="button">Submit</button>
       </form>
     );
   }

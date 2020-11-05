@@ -7,18 +7,28 @@ import { Field, reduxForm } from "redux-form";
 // };
 
 class StreamCreate extends React.Component {
+  renderError({ error, touched }) {
+    if (touched && error) {
+      return (
+        <div className="errormsg">
+          <div className="header">{error}</div>
+        </div>
+      );
+    }
+  }
   //helper method for Field. it will be a controlled element
-  renderInput({ input, label, meta }) {
+  renderInput = ({ input, label, meta }) => {
     // console.log(formProps);
     // console.log(meta);
     return (
       <div className="field">
         <label>{label}</label>
-        <input {...input} />
-        <div>{meta.error}</div>
+        <input {...input} autoComplete="off" />
+        {this.renderError(meta)}
+        {/* <div className="errormsg">{meta.error}</div> */}
       </div>
     );
-  }
+  };
   //handleing submission
   onSubmit(formValues) {
     console.log(formValues);
@@ -45,11 +55,11 @@ const validate = formValues => {
 
   if (!formValues.title) {
     // only ran if user didnot give any title
-    errors.title = "You must enter a Title!";
+    errors.title = " ⚠️ You must enter a Title!";
   }
   if (!formValues.description) {
     // only ran if user didnot give any title
-    errors.description = "You must enter a Description!";
+    errors.description = " ⚠️ You must enter a Description!";
   }
   return errors;
 };

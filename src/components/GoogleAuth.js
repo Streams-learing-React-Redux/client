@@ -29,11 +29,11 @@ class GoogleAuth extends Component {
     this.setState({ isSignedIn: this.auth.isSignedIn.get() });
   };
 
-  onSignIn = () => {
+  onSignInClick = () => {
     this.auth.signIn();
   };
 
-  onSignOut = () => {
+  onSignOutClick = () => {
     this.auth.signOut();
   };
 
@@ -43,13 +43,13 @@ class GoogleAuth extends Component {
       return null;
     } else if (this.state.isSignedIn) {
       return (
-        <button onClick={this.onSignOut} className="google-button">
+        <button onClick={this.onSignOutClick} className="google-button">
           G Sign Out
         </button>
       );
     } else {
       return (
-        <button onClick={this.onSignIn} className="google-button">
+        <button onClick={this.onSignInClick} className="google-button">
           Sign In with Google
         </button>
       );
@@ -90,3 +90,6 @@ export default GoogleAuth;
 
 //to update the state on screen:
 //add a eventlistener
+
+//redux way one:
+//inside component we got the clicks that access the gapi auth2 instances-> this lib will call onauth event handlr-> each time onauth is called we will call appropriate action creator -> signin / sign out for successfull signin or out -> they will return action that will be in auth reducer that will hold booolean according to currnt status of user sing in or not.. here we will move the state to redus store cause n\later lot of other componenets will need that state and if it statys in google auth component it will be so challanging to take state out of eevrytime for every use. rather it will be stored in redux store holding it as a boolean flag.  redux store will connect to google auth componenet as a prop whether user is signed in or out

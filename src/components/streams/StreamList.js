@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchStreams } from "../../actions";
 import cam from "../../assets/cam.png";
+import { Link } from "react-router-dom"; //to link create stream page
 
 class StreamList extends React.Component {
   componentDidMount() {
@@ -41,12 +42,27 @@ class StreamList extends React.Component {
     });
   }
 
+  //helper method for create stream for signed in user. we will link create page here
+  renderCreate() {
+    if (this.props.isSignedIn) {
+      return (
+        <div style={{ textAlign: "right" }}>
+          <Link to="/streams/new" className="primary">
+            Create Stream
+          </Link>
+        </div>
+      );
+    }
+  }
+
   render() {
     console.log(this.props.streams);
     return (
       <div className="container-body">
         <h2>Streams</h2>
+
         <div className="full_list">{this.renderList()}</div>
+        <div className="full_list">{this.renderCreate()}</div>
       </div>
     );
   }
@@ -56,7 +72,8 @@ class StreamList extends React.Component {
 const mapStateToProps = state => {
   return {
     streams: Object.values(state.streams),
-    currentUserId: state.auth.userId
+    currentUserId: state.auth.userId,
+    isSignedIn: state.auth.isSignedIn // to get if the user signedin or not for showing create button
   }; //Object.value is a js builtin function, ti will take an aobject as an argument, pull out all the different values of the object and then inserted into an array.
 };
 export default connect(mapStateToProps, { fetchStreams })(StreamList);

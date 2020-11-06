@@ -33,8 +33,36 @@ html {
 
 .container-body {
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
   padding: calc(5px + 1vw) calc(20px + 1vw);
+}
+h2 {
+  margin: 0;
+  padding-bottom: 20px;
+  border-bottom: 1.5px solid rgba(214, 202, 202, 0.664);
+}
+
+h3 {
+  margin: 0;
+}
+img {
+  width: auto;
+  height: calc(35px + 1vw);
+  margin: 20px 20px 0 0;
+}
+.one_item {
+  display: flex;
+  flex-flow: row;
+  padding: 10px 5px;
+  border-bottom: 1.5px solid rgba(214, 202, 202, 0.664);
+  text-transform: capitalize;
+}
+.one_item_title {
+  font-weight: 900;
+  color: #511ca7;
+}
+.one_item_description {
+  font-weight: 500;
 }
 
 a {

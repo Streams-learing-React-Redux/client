@@ -50,6 +50,9 @@ img {
   height: calc(35px + 1vw);
   margin: 20px 20px 0 0;
 }
+.full_list {
+  margin-bottom: 25px;
+}
 .one_item {
   display: flex;
   flex-flow: row;

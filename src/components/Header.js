@@ -5,7 +5,7 @@ import GoogleAuth from "./GoogleAuth";
 const Header = () => {
   return (
     <div className="header-pointing-menu">
-      <Link to="/" className="item">
+      <Link to="/" className="item logo">
         Tutorial Center
       </Link>
       <div className="header-right-menu">

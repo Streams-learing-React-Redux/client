@@ -59,7 +59,7 @@ class StreamList extends React.Component {
     console.log(this.props.streams);
     return (
       <div className="container-body">
-        <h2>Streams</h2>
+        <h2>All Tutorials</h2>
 
         <div className="full_list">{this.renderList()}</div>
         <div className="full_list">{this.renderCreate()}</div>

@@ -32,6 +32,8 @@ export const createStream = formValues => async (dispatch, getState) => {
     type: CREATE_STREAM,
     payload: response.data
   });
+
+  //programmatic navigation to get user back to root route
 };
 
 //action creator for fetching all streams

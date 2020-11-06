@@ -1,5 +1,5 @@
 import streams from "../apis/streams"; //import baseurl
-import { SIGN_IN, SIGN_OUT } from "./types";
+import { SIGN_IN, SIGN_OUT, CREATE_STREAM } from "./types";
 
 //will receive userId as an argument and add it to the payload property
 export const signIn = userId => {
@@ -16,5 +16,9 @@ export const signOut = () => {
 
 //action creator for api. this is an async action creator. we nuse redux-thunk here.
 export const createStream = formValues => async dispatch => {
-  streams.post("/streams", formValues); //making a post request with axios
+  const response = await streams.post("/streams", formValues); //making a post request with axios, dispatch action with payload-> create reducer
+  dispatch({
+    type: CREATE_STREAM,
+    payload: response.data
+  });
 };

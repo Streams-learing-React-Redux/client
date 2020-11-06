@@ -9,12 +9,14 @@ class StreamList extends React.Component {
     this.props.fetchStreams();
   }
 
-  //HELPER MOTHOD FOR ADMIN
+  //HELPER MeTHOD FOR ADMIN
   renderAdmin(stream) {
     if (stream.userId === this.props.currentUserId) {
       return (
         <div className="right_floated_content">
-          <button className="primary space">EDIT</button>
+          <Link to={`/streams/edit/${stream.id}`} className="primary space">
+            EDIT
+          </Link>
           <button className="negative space">DELETE</button>
         </div>
       );
@@ -59,7 +61,7 @@ class StreamList extends React.Component {
     console.log(this.props.streams);
     return (
       <div className="container-body">
-        <h2>All Tutorials</h2>
+        <h2>Tutorials</h2>
 
         <div className="full_list">{this.renderList()}</div>
         <div className="full_list">{this.renderCreate()}</div>

@@ -70,7 +70,7 @@ img {
   color: #511ca7;
 }
 .one_item_description {
-  font-weight: 500;
+  font-size: calc(1px + 2vmin);
 }
 
 .right_floated_content {

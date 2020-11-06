@@ -1,3 +1,4 @@
+import _ from "lodash";
 import {
   FETCH_STREAMS,
   FETCH_STREAM,
@@ -19,7 +20,7 @@ const streamReducer = (state = {}, action) => {
       return {};
 
     case DELETE_STREAM:
-      return {};
+      return _.omit(state, action.payload); //using lodash to delete
 
     default:
       return state;

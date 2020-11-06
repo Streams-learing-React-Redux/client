@@ -1,4 +1,6 @@
 import streams from "../apis/streams"; //import baseurl
+//import history object created in histry file to programmaticly navigate user
+import history from "../history";
 import {
   SIGN_IN,
   SIGN_OUT,
@@ -34,6 +36,7 @@ export const createStream = formValues => async (dispatch, getState) => {
   });
 
   //programmatic navigation to get user back to root route
+  history.push("/"); // we use push to automaticly navigate user around
 };
 
 //action creator for fetching all streams

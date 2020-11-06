@@ -17,7 +17,7 @@ const streamReducer = (state = {}, action) => {
       return { ...state, [action.payload.id]: action.payload };
 
     case FETCH_STREAMS:
-      return {};
+      return { ...state, ..._.mapKeys(action.payload, "id") }; //here what _.mapKeys is doing is: taking the "id" of each stream from stream array and setting it as a id for the same stream in our state object
 
     case DELETE_STREAM:
       return _.omit(state, action.payload); //using lodash to delete

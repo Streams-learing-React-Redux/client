@@ -23,8 +23,11 @@ export const signOut = () => {
 };
 
 //action creator for create stream. this is an async action creator. we nuse redux-thunk here.
-export const createStream = formValues => async dispatch => {
-  const response = await streams.post("/streams", formValues); //making a post request with axios, dispatch action with payload-> create reducer
+//we need to pass userId too to get user id
+export const createStream = formValues => async (dispatch, getState) => {
+  //destructuring userid
+  const { userId } = getState().auth;
+  const response = await streams.post("/streams", { ...formValues, userId }); //making a post request with axios, dispatch action with payload-> create reducer
   dispatch({
     type: CREATE_STREAM,
     payload: response.data

@@ -8,19 +8,34 @@ class StreamList extends React.Component {
     this.props.fetchStreams();
   }
 
+  //HELPER MOTHOD FOR ADMIN
+  renderAdmin(stream) {
+    if (stream.userId === this.props.currentUserId) {
+      return (
+        <div className="right_floated_content">
+          <button className="primary space">EDIT</button>
+          <button className="negative space">DELETE</button>
+        </div>
+      );
+    }
+  }
+
   //method for redndering list
   renderList() {
     return this.props.streams.map(stream => {
       return (
         <div className="one_item" key={stream.id}>
-          <div className="one_item_content">
-            <img src={cam} alt="image of camera" />
-          </div>
+          <div className="one_item_parts">
+            <div className="one_item_content">
+              <img src={cam} alt="camera" />
+            </div>
 
-          <div className="one_item_content">
-            <h3 className="one_item_title">{stream.title}</h3>
-            <div className="one_item_description">{stream.description}</div>
+            <div className="one_item_content">
+              <h3 className="one_item_title">{stream.title}</h3>
+              <div className="one_item_description">{stream.description}</div>
+            </div>
           </div>
+          <div className="one_item_parts">{this.renderAdmin(stream)}</div>
         </div>
       );
     });
@@ -39,7 +54,10 @@ class StreamList extends React.Component {
 
 // makeing streams availabe as props, here we will turn the object into an array again to make it easy to map over and run the function
 const mapStateToProps = state => {
-  return { streams: Object.values(state.streams) }; //Object.value is a js builtin function, ti will take an aobject as an argument, pull out all the different values of the object and then inserted into an array.
+  return {
+    streams: Object.values(state.streams),
+    currentUserId: state.auth.userId
+  }; //Object.value is a js builtin function, ti will take an aobject as an argument, pull out all the different values of the object and then inserted into an array.
 };
 export default connect(mapStateToProps, { fetchStreams })(StreamList);
 

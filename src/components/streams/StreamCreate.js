@@ -1,6 +1,9 @@
 import React from "react";
 //importing Field (component) and reduxForm (function)
 import { Field, reduxForm } from "redux-form";
+//import  connect and action creator to hook up our action creators here
+import { connect } from "react-redux";
+import { createStream } from "../../actions";
 
 // const StreamCreate = () => {
 //   return <div>StreamCreate</div>;
@@ -30,9 +33,10 @@ class StreamCreate extends React.Component {
     );
   };
   //handleing submission
-  onSubmit(formValues) {
-    console.log(formValues);
-  }
+  onSubmit = formValues => {
+    // console.log(formValues);
+    this.props.createStream(formValues); //on submit creating stream with the formvalue
+  };
   render() {
     // console.log(this.props);
     return (
@@ -64,10 +68,13 @@ const validate = formValues => {
   return errors;
 };
 
-export default reduxForm({
+const formWrapped = reduxForm({
   form: "streamCreate",
   validate
 })(StreamCreate);
+
+//exporting both form and connect
+export default connect(null, { createStream })(formWrapped);
 
 //we will refactor this functional componenet to a class based component because, we need few helper method and we want a better organising sitauation here.
 // we will import redux form at the top. reduxFrom function has the same functionality as connect funtion from the react-redux library. reactForm funtion will make sure that we can call some action cerator and get some data into our component automaticaly.

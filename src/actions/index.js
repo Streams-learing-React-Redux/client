@@ -74,6 +74,7 @@ export const editStream = (id, formValues) => async dispatch => {
     type: EDIT_STREAM,
     payload: response.data
   });
+  history.push("/");
 };
 
 //to create all action creators all togather: make a table of:

@@ -68,8 +68,9 @@ export const deleteStream = id => async dispatch => {
 };
 
 //action creator for editinging one stream
+//put changes all properties, we need patch here so the user id stays,so the buttons stay on home page
 export const editStream = (id, formValues) => async dispatch => {
-  const response = await streams.put(`/streams/${id}`, formValues);
+  const response = await streams.patch(`/streams/${id}`, formValues);
   dispatch({
     type: EDIT_STREAM,
     payload: response.data

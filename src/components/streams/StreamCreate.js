@@ -1,37 +1,44 @@
+//************* BIG REFACTORING************/
+//stream create now needs to show an instance of stream form passed down onsubmit and do NOTHING ELSE.
+// for that: remove component, field from import, delete renderError(), renderinput(), the entire form on rednder, replace it with header and form, dont need the validate function anymore, no wrapping with reduxform
+//
+
 import React from "react";
 //importing Field (component) and reduxForm (function)
-import { Field, reduxForm } from "redux-form";
+// import { Field, reduxForm } from "redux-form";
 //import  connect and action creator to hook up our action creators here
+
+//************* BIG REFACTORING************/
+// we need this two because this componenet need to call an action creator to create a new stream
 import { connect } from "react-redux";
 import { createStream } from "../../actions";
-
-// const StreamCreate = () => {
-//   return <div>StreamCreate</div>;
-// };
+//we need the stream form componenet that we created
+import StreamForm from "./StreamForm";
 
 class StreamCreate extends React.Component {
-  renderError({ error, touched }) {
-    if (touched && error) {
-      return (
-        <div className="errormsg">
-          <div className="header">{error}</div>
-        </div>
-      );
-    }
-  }
+  //************* BIG REFACTORING************/
+  // renderError({ error, touched }) {
+  //   if (touched && error) {
+  //     return (
+  //       <div className="errormsg">
+  //         <div className="header">{error}</div>
+  //       </div>
+  //     );
+  //   }
+  // }
   //helper method for Field. it will be a controlled element
-  renderInput = ({ input, label, meta }) => {
-    // console.log(formProps);
-    // console.log(meta);
-    return (
-      <div className="field">
-        <label>{label}</label>
-        <input {...input} autoComplete="off" />
-        {this.renderError(meta)}
-        {/* <div className="errormsg">{meta.error}</div> */}
-      </div>
-    );
-  };
+  // renderInput = ({ input, label, meta }) => {
+  //   // console.log(formProps);
+  //   // console.log(meta);
+  //   return (
+  //     <div className="field">
+  //       <label>{label}</label>
+  //       <input {...input} autoComplete="off" />
+  //       {this.renderError(meta)}
+  //       {/* <div className="errormsg">{meta.error}</div> */}
+  //     </div>
+  //   );
+  // };
   //handleing submission
   onSubmit = formValues => {
     // console.log(formValues);
@@ -39,43 +46,42 @@ class StreamCreate extends React.Component {
   };
   render() {
     // console.log(this.props);
+    //************* BIG REFACTORING************/
     return (
-      <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="form">
-        <Field name="title" component={this.renderInput} label="Enter Title" />
-        <Field
-          name="description"
-          component={this.renderInput}
-          label="Enter Description"
-        />
-        <button className="button">Submit</button>
-      </form>
+      <div>
+        <h3>Create a Stream</h3>
+        <StreamForm onSubmit={this.onSubmit} />
+      </div>
     );
   }
 }
 
+//************* BIG REFACTORING************/
 //validate form input
-const validate = formValues => {
-  const errors = {};
+// const validate = formValues => {
+//   const errors = {};
 
-  if (!formValues.title) {
-    // only ran if user didnot give any title
-    errors.title = " ⚠️ You must enter a Title!";
-  }
-  if (!formValues.description) {
-    // only ran if user didnot give any title
-    errors.description = " ⚠️ You must enter a Description!";
-  }
-  return errors;
-};
+//   if (!formValues.title) {
+//     // only ran if user didnot give any title
+//     errors.title = " ⚠️ You must enter a Title!";
+//   }
+//   if (!formValues.description) {
+//     // only ran if user didnot give any title
+//     errors.description = " ⚠️ You must enter a Description!";
+//   }
+//   return errors;
+// };
 
-const formWrapped = reduxForm({
-  form: "streamCreate",
-  validate
-})(StreamCreate);
+//************* BIG REFACTORING************/
+// const formWrapped = reduxForm({
+//   form: "streamCreate",
+//   validate
+// })(StreamCreate);
 
 //exporting both form and connect
-export default connect(null, { createStream })(formWrapped);
+export default connect(null, { createStream })(StreamCreate);
 
+//******* THIS PART WAS FROM BEFORE REFACTORING AND REUSING FORM */
 //we will refactor this functional componenet to a class based component because, we need few helper method and we want a better organising sitauation here.
 // we will import redux form at the top. reduxFrom function has the same functionality as connect funtion from the react-redux library. reactForm funtion will make sure that we can call some action cerator and get some data into our component automaticaly.
 //we will hook reduxform function to the bottom and pass an object in it for configuration. connect() takes seperate arguments into it, reduxform() instead receives object

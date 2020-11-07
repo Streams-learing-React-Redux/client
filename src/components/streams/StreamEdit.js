@@ -14,7 +14,8 @@ class StreamEdit extends React.Component {
   }
   //***** REFACTORING******* we need onSubmit() , this will be used  as a callback for streamform
   onSubmit = formValues => {
-    console.log(formValues);
+    // console.log(formValues);
+    this.props.editStream(this.props.match.params.id, formValues);
   };
 
   render() {

@@ -78,7 +78,7 @@ class StreamCreate extends React.Component {
 //   validate
 // })(StreamCreate);
 
-//exporting both form and connect
+//exporting both Streamform(mainly Reduxform) and connect
 export default connect(null, { createStream })(StreamCreate);
 
 //******* THIS PART WAS FROM BEFORE REFACTORING AND REUSING FORM */

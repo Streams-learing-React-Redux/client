@@ -62,8 +62,11 @@ img {
   flex-flow: row;
   padding: 10px 5px;
   border-bottom: 1.5px solid rgba(214, 202, 202, 0.664);
-  text-transform: capitalize;
+
   justify-content: space-between;
+}
+.capitalize {
+  text-transform: capitalize;
 }
 .one_item_parts {
   display: flex;

@@ -35,9 +35,12 @@ class StreamList extends React.Component {
               <img src={cam} alt="camera" />
             </div>
 
-            <div className="one_item_content">
+            <div className="one_item_content capitalize">
               <h3>
-                <Link className="one_item_title" to={`/streams/${stream.id}`}>
+                <Link
+                  className="one_item_title capitalize"
+                  to={`/streams/${stream.id}`}
+                >
                   {stream.title}
                 </Link>
               </h3>

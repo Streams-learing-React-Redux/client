@@ -223,3 +223,10 @@ input {
 .blue:hover {
   background-color: #2c8efd;
 }
+
+.image {
+  position: fixed;
+  left: 45vw;
+  width: 8vw;
+  height: auto;
+}

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchStream } from "../../actions";
 import Modal from "../Modal";
 import history from "../../history";
+import emoji from "../../assets/emoji.png";
 
 class StreamDelete extends React.Component {
   componentDidMount() {
@@ -18,13 +19,20 @@ class StreamDelete extends React.Component {
     );
   }
 
+  renderContent() {
+    if (!this.props.stream) {
+      return "Are you sure to delete this stream?";
+    }
+    return `Are you sure to delete this stream with title: ${this.props.stream.title}`;
+  }
+
   render() {
     return (
       <div>
-        StreamDelete
+        <img className="image" src={emoji} alt="" />
         <Modal
           title="Delete Stream"
-          content="Are you sure to delete this stream?"
+          content={this.renderContent()}
           actions={this.renderActions()}
           onDismiss={() => history.push("/")}
         />
@@ -32,4 +40,8 @@ class StreamDelete extends React.Component {
     );
   }
 }
-export default connect(null, { fetchStream })(StreamDelete);
+const mapStateToProps = (state, ownProps) => {
+  return { stream: state.streams[ownProps.match.params.id] };
+};
+
+export default connect(mapStateToProps, { fetchStream })(StreamDelete);

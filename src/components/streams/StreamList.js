@@ -36,7 +36,11 @@ class StreamList extends React.Component {
             </div>
 
             <div className="one_item_content">
-              <h3 className="one_item_title">{stream.title}</h3>
+              <h3>
+                <Link className="one_item_title" to={`/streams/${stream.id}`}>
+                  {stream.title}
+                </Link>
+              </h3>
               <div className="one_item_description">{stream.description}</div>
             </div>
           </div>

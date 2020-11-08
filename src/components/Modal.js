@@ -9,7 +9,12 @@ const Modal = props => {
         <h3>{props.title}</h3>
         <div className="modal-body-part">
           <p>{props.content}</p>
-          <div className="modal-body-part-button">{props.actions}</div>
+          <div className="modal-body-part-button">
+            {props.actions}
+            <button onClick={props.onDismiss} className="color blue">
+              Cancel
+            </button>
+          </div>
         </div>
       </div>
     </div>,

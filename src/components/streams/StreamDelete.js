@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchStream } from "../../actions";
+import { fetchStream, deleteStream } from "../../actions";
 import Modal from "../Modal";
 import history from "../../history";
 import emoji from "../../assets/emoji.png";
@@ -11,10 +11,12 @@ class StreamDelete extends React.Component {
     this.props.fetchStream(this.props.match.params.id);
   }
   renderActions() {
+    const { id } = this.props.match.params;
     return (
       <React.Fragment>
-        <button className="color">Delete</button>
-        <button className="color blue">Cancel</button>
+        <button onClick={() => this.props.deleteStream(id)} className="color">
+          Delete
+        </button>
       </React.Fragment>
     );
   }
@@ -44,4 +46,6 @@ const mapStateToProps = (state, ownProps) => {
   return { stream: state.streams[ownProps.match.params.id] };
 };
 
-export default connect(mapStateToProps, { fetchStream })(StreamDelete);
+export default connect(mapStateToProps, { fetchStream, deleteStream })(
+  StreamDelete
+);

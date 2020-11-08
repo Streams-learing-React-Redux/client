@@ -65,6 +65,7 @@ export const deleteStream = id => async dispatch => {
     type: DELETE_STREAM,
     payload: id
   });
+  history.push("/");
 };
 
 //action creator for editinging one stream

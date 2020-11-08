@@ -17,7 +17,9 @@ class StreamList extends React.Component {
           <Link to={`/streams/edit/${stream.id}`} className="primary space">
             EDIT
           </Link>
-          <button className="negative space">DELETE</button>
+          <Link to={`/streams/delete/${stream.id}`} className="negative space">
+            DELETE
+          </Link>
         </div>
       );
     }
